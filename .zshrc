@@ -161,6 +161,13 @@ _show_open_files(){
   fi
 }
 
+_add_ssh(){
+  eval $(ssh-agent -s) 
+  ssh-add ~/.ssh/id_rsa
+  ssh-add ~/.ssh/id_rsa_rappi
+  ssh-add ~/.ssh/id_rsa_avalith
+}
+
 zle -N _change_dir
 bindkey '^h' _change_dir
 
@@ -168,6 +175,8 @@ zle -N _reverse_search
 bindkey '^r' _reverse_search
 
 zle -N _show_open_files
+
+zle -N _add_ssh
 
 # FIXES! DO NOT CHANGE
 alias man='nocorrect man '
@@ -181,12 +190,12 @@ if [[ -f /usr/bin/batcat ]]; then
 fi
 
 # CUSTOM ALIASES
-alias l='colorls -lah --sd'
-alias la='colorls -lAh --sd'
-alias lc='colorls -lAh --sd'
-alias ll='colorls -lh --sd'
-alias ls='colorls --sd'
-alias lsa='colorls -lah --sd'
+# alias l='colorls -lah --sd'
+# alias la='colorls -lAh --sd'
+# alias lc='colorls -lAh --sd'
+# alias ll='colorls -lh --sd'
+# alias ls='colorls --sd'
+# alias lsa='colorls -lah --sd'
 
 alias uos='sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove'
 alias uzsh='bash ~/.dotfiles/update.sh && omz update && src'
