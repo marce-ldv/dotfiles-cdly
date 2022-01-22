@@ -1,5 +1,7 @@
 # dotfiles-cdly
-Preview:
+Preview WSL2:
+![Screenshot](md/wsl2.png)
+Preview KDE:
 ![Screenshot](md/kde.jpeg)
 
 # Install
