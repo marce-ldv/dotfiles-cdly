@@ -12,7 +12,7 @@ or
 
 ```git clone https://github.com/marce-ldv/dotfiles-cdly.git ~/.dotfiles && bash ~/.dotfiles/install.sh```
 
-## Install in WSL
+## Install in WSL (updated to use in WSL2)
 
 ```git clone git@github.com:marce-ldv/dotfiles-cdly.git ~/.dotfiles && bash ~/.dotfiles/install-wsl.sh```
 
