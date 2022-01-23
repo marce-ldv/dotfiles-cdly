@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -14,8 +14,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# See https://github.com/ohmyshell/ohmyshell/wiki/Themes
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,7 +80,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   colored-man-pages
-  zsh_reload
   # ssh-agent
   bgnotify
   rsync
@@ -101,7 +100,7 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# export LANG=es_AR.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -129,10 +128,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias ohmyshell="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 [[ -d ~/.automaticScripts ]] && PATH=${PATH}${PATH:+:}~/.automaticScripts
 [[ -d ~/.local/bin ]] && PATH=${PATH}${PATH:+:}~/.local/bin
 [[ -d ~/.local/sbin ]] && PATH=${PATH}${PATH:+:}~/.local/sbin
@@ -140,6 +139,17 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 [[ -d ~/sbin ]] && PATH=${PATH}${PATH:+:}~/sbin
 
 export PATH
+export LC_ALL="es_AR.UTF-8"
+export LANG="es_AR.UTF-8"
+export LC_NUMERIC="es_AR.UTF-8"
+export LC_TIME="es_AR.UTF-8"
+export LC_MONETARY="es_AR.UTF-8"
+export LC_PAPER="es_AR.UTF-8"
+export LC_IDENTIFICATION="es_AR.UTF-8"
+export LC_NAME="es_AR.UTF-8"
+export LC_ADDRESS="es_AR.UTF-8"
+export LC_TELEPHONE="es_AR.UTF-8"
+export LC_MEASUREMENT="es_AR.UTF-8"
 
 _change_dir() {
   dirtomove=$(ls | fzf)
@@ -147,18 +157,8 @@ _change_dir() {
 }
 
 _reverse_search(){
-  local selected_command=$(fc -rl 1 | awk '{$1="";print substr($0,2)}' | fzf)
+  local selected_command=$(fc -rnl 1 | fzf)
   LBUFFER=$selected_command
-}
-
-_show_open_files(){
-  selected=$(ps axc | awk 'NR > 1' | awk '{print substr($0,index($0,$5))}' | sort -u | fzf)
-
-  if [ ! -z $1 ]; then
-    lsof -r 2 -c "$selected"
-  else
-    lsof -c "$selected"
-  fi
 }
 
 zle -N _change_dir
@@ -166,8 +166,6 @@ bindkey '^h' _change_dir
 
 zle -N _reverse_search
 bindkey '^r' _reverse_search
-
-zle -N _show_open_files
 
 # FIXES! DO NOT CHANGE
 alias man='nocorrect man '
@@ -188,14 +186,46 @@ alias ll='colorls -lh --sd'
 alias ls='colorls --sd'
 alias lsa='colorls -lah --sd'
 
-alias uos='sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove'
-alias uzsh='bash ~/.myzsh/update.sh && omz update && src'
-alias pzsh='cd ~/.myzsh && git pull && bash ~/.myzsh/update.sh && omz update && src'
+alias ushell='bash ~/.dotfiles/update.sh && omz update && omz reload'
+alias pshell='cd ~/.dotfiles && git pull && bash ~/.dotfiles/update.sh && omz update && omz reload'
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-alias open='xdg-open'
-alias uzshm='bash ~/.myzsh/update.sh && omz update && bash ~/.myzsh/patch.update.sh && src'
-alias pzshm='cd ~/.myzsh && git pull && bash ~/.myzsh/update.sh  && bash ~/.myzsh/patch.update.sh && omz update && src'
-alias cdc='cd ~/code'
+# find out which distribution we are running on
+_distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
+# update alias
+case $_distro in
+    *neon*)   alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo pkcon refresh && sudo pkcon -y update';;
+    *)        alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove';;
+esac
+
+# set an icon based on the distro
+case $_distro in
+    *kali*)                  ICON="ﴣ";;
+    *neon*)                  ICON="";;
+    *arch*)                  ICON="";;
+    *debian*)                ICON="";;
+    *raspbian*)              ICON="";;
+    *ubuntu*)                ICON="";;
+    *elementary*)            ICON="";;
+    *fedora*)                ICON="";;
+    *coreos*)                ICON="";;
+    *gentoo*)                ICON="";;
+    *mageia*)                ICON="";;
+    *centos*)                ICON="";;
+    *opensuse*|*tumbleweed*) ICON="";;
+    *sabayon*)               ICON="";;
+    *slackware*)             ICON="";;
+    *linuxmint*)             ICON="";;
+    *alpine*)                ICON="";;
+    *aosc*)                  ICON="";;
+    *nixos*)                 ICON="";;
+    *devuan*)                ICON="";;
+    *manjaro*)               ICON="";;
+    *rhel*)                  ICON="";;
+    *)                       ICON="";;
+esac
+
+export STARSHIP_DISTRO="$ICON"
+export IP="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+
+eval "$(starship init zsh)"

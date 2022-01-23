@@ -1,0 +1,316 @@
+# ~/.config/starship.toml
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Change command timeout from 500 to 1000 ms
+# command_timeout = 1000
+
+# Change the default prompt format
+format = """[╭╴](bold dimmed green)$env_var$shell$username$hostname$memory_usage$battery
+[│](bold dimmed green)$time$shlvl$singularity$kubernetes$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$docker_context$package$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$aws$gcloud$openstack$azure$crystal$custom$sudo$cmd_duration$jobs$directory
+[╰─](bold dimmed green)$status$character"""
+
+# Change the default prompt characters
+[character]
+error_symbol = "[‼️](bold red) "
+success_symbol = "[❯](bold green) "
+
+# Shows an icon that should be included by zshrc script based on the distribution or os
+[env_var.STARSHIP_DISTRO]
+disabled = false
+format = '[$env_value](bold white)'
+variable = "STARSHIP_DISTRO"
+
+[env_var.IP]
+disabled = false
+format = "[〉](bold dimmed green)🌎[$env_value](bold white)"
+variable = "IP"
+
+# Shows the username
+[username]
+disabled = false
+format = "[$user]($style)"
+show_always = true
+style_root = "bold red"
+style_user = "bold yellow"
+
+[hostname]
+disabled = false
+format = "[@$hostname](bold yellow)"
+ssh_only = false
+
+[directory]
+format = " at [$path]($style)[$read_only]($read_only_style)"
+home_symbol = "🏠 ~"
+read_only = " 🔒 "
+read_only_style = "197"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[shell]
+format = "[〉](bold dimmed green)[$indicator]($style) "
+fish_indicator = ""
+powershell_indicator = "_"
+zsh_indicator = "zsh"
+bash_indicator = "zsh"
+cmd_indicator = "cmd"
+ion_indicator = "ion"
+tcsh_indicator = "tsh"
+xonsh_indicator = "xsh"
+nu_indicator = "nu"
+unknown_indicator = "mystery shell"
+disabled = false
+
+[status]
+disabled = false
+format = ' [\[$symbol $common_meaning$signal_name$maybe_int\]]($style)'
+map_symbol = true
+recognize_signal_code =  true
+pipestatus = true
+
+[time]
+disabled = false
+format = "🕙[$time]($style)"
+style = "yellow"
+time_format = "%T"
+utc_time_offset = "local"
+
+[cmd_duration]
+format = ' [\(⏳$duration\)]($style)'
+style = "bold yellow"
+min_time = 1000
+
+[battery]
+format = "[〉](bold dimmed green)[$symbol$percentage]($style)"
+disabled = false
+
+[[battery.display]]  
+threshold = 20
+style = "bold red"
+
+[[battery.display]] 
+threshold = 40
+style = "bold yellow"
+
+[[battery.display]]  
+threshold = 100
+style = "bold white"
+
+[memory_usage]
+disabled = false
+format = "[〉](bold dimmed green)[🐏$ram_pct ♻️$swap_pct](bold green)"
+threshold = -1
+symbol = " "
+
+[package]
+format = " [$symbol$version]($style)"
+symbol = "📦"
+
+
+[git_branch]
+format = " on [$symbol$branch]($style)"
+style = "bold green"
+symbol = "🌱"
+truncation_length = 30
+truncation_symbol = "…/"
+
+[git_status]
+conflicted = "🚩"
+up_to_date = "✅"
+untracked = "❓"
+stashed = "📦"
+modified = "📝"
+staged = '[++($count)](green)'
+renamed = "🔧"
+deleted = "🗑️"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+format = ' [($state( $progress_current of $progress_total))]($style)'
+cherry_pick = " [🍒 PICKING](bold red)"
+
+[git_commit]
+format = " [\\($hash$tag\\)]($style)"
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_metrics]
+added_style = "bold blue"
+format = ' [+$added]($added_style)/[-$deleted]($deleted_style)'
+
+[docker_context]
+format = " [$symbol$context]($style)"
+symbol = "🐳"
+
+[sudo]
+format = " [as $symbol]($style)"
+style = "bold green"
+symbol = "🧙"
+allow_windows = true
+disabled = false
+
+[lua]
+format = " via [$symbol($version )]($style)"
+symbol = "🌙"
+
+[java]
+format = " via [${symbol}(${version})]($style)"
+symbol = "☕"
+
+[dotnet]
+format = " via [$symbol]($style)"
+symbol = ""
+heuristic = false
+
+[python]
+format = ' via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
+python_binary = "python3"
+symbol = "🐍"
+
+[nodejs]
+format = " via [$symbol$version]($style)"
+disabled = false
+symbol = ""
+
+[php]
+format = " via [$symbol($version)]($style)"
+symbol = "🐘"
+
+[cmake]
+format = " via [$symbol($version)]($style)"
+symbol = "△"
+
+[cobol]
+format = " via [$symbol($version)]($style)"
+symbol = "⚙️"
+
+[conda]
+format = " via [$symbol($version)]($style)"
+symbol = "🅒"
+
+[crystal]
+format = " via [$symbol($version)]($style)"
+symbol = "🔮"
+
+[dart]
+format = " via [$symbol($version)]($style)"
+symbol = "🎯"
+
+[deno]
+format = " via [$symbol($version)]($style)"
+symbol = "🦕"
+
+[elixir]
+format = " via [$symbol($version)]($style)"
+symbol = "💧"
+
+[elm]
+format = " via [$symbol($version)]($style)"
+symbol = "🌳"
+
+[erlang]
+format = " via [$symbol($version)]($style)"
+symbol = ""
+
+[gcloud]
+format = ' on [$symbol$account(@$domain)(\($region\))]($style)'
+symbol = "☁️"
+
+[golang]
+format = " via [$symbol($version)]($style)"
+symbol = "🐹"
+
+[julia]
+format = " via [$symbol($version)]($style)"
+symbol = "ஃ"
+
+[kotlin]
+format = " via [$symbol($version)]($style)"
+symbol = "🅺"
+
+[kubernetes]
+format = ' [$symbol$context( \($namespace\))]($style) in'
+symbol = "☸"
+
+[hg_branch]
+format = ' on [$symbol$branch]($style)'
+symbol = ""
+
+[nim]
+format = " via [$symbol($version)]($style)"
+symbol = "👑"
+
+[nix_shell]
+format = ' via [$symbol$state( \($name\))]($style)'
+symbol = "❄️"
+
+[ocaml]
+format = ' via [$symbol($version )(\($switch_indicator$switch_name\))]($style)'
+symbol = "🐫"
+
+[openstack]
+format = " on [$symbol$cloud(\\($project\\))]($style)"
+symbol = "☁️"
+
+[perl]
+format = " via [$symbol($version)]($style)"
+symbol = "🐪"
+
+[pulumi]
+format = " via [$symbol$stack]($style)"
+symbol = ""
+
+[purescript]
+format = " via [$symbol($version)]($style)"
+symbol = "<=>"
+
+[rlang]
+format = " via [$symbol($version)]($style)"
+symbol = "📐"
+
+[red]
+format = " via [$symbol($version)]($style)"
+symbol = "🔺"
+
+[ruby]
+format = " via [$symbol($version)]($style)"
+symbol = "💎"
+
+[rust]
+format = " via [$symbol($version)]($style)"
+symbol = "🦀"
+
+[scala]
+format = " via [$symbol($version)]($style)"
+symbol = "🆂"
+
+[swift]
+format = " via [$symbol($version)]($style)"
+symbol = "🐦"
+
+[terraform]
+format = " via [$symbol$workspace]($style)"
+symbol = "💠"
+
+[vagrant]
+format = " via [$symbol($version)]($style)"
+symbol = "⍱"
+
+[vlang]
+format = " via [$symbol($version)]($style)"
+symbol = "V"
+
+[zig]
+format = " via [$symbol($version)]($style)"
+symbol = "↯"
+
+[helm]
+format = " via [$symbol($version)]($style)"
+symbol = "⎈"
+
+[vcsh]
+format = " vcsh [$symbol$repo]($style)"
