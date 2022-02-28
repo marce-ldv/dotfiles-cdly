@@ -15,6 +15,13 @@ choco install jetbrainsmononf --force -y
 choco install nano --force -y
 choco install fzf --force -y
 
+# Install scoop
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+
+#Install nvm
+scoop install nvm
+nvm install latest
+
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
 Install-Module -Name Terminal-Icons -Repository PSGallery -Force
