@@ -5,6 +5,10 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 Write-Output "Installing chocolatey"
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+# Install scoop
+Write-Output "Installing scoop"
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+
 if (!(Test-Path -Path $PROFILE)) {
     New-Item -ItemType File -Path $PROFILE -Force
 }
@@ -15,12 +19,14 @@ choco install jetbrainsmononf --force -y
 choco install nano --force -y
 choco install fzf --force -y
 
-# Install scoop
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-
 #Install nvm
+Write-Output "Installing nvm"
 scoop install nvm
 nvm install latest
+
+#Install curl
+Write-Output "Installing curl"
+scoop install curl
 
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PSReadLine -Force -AllowPrerelease -SkipPublisherCheck
