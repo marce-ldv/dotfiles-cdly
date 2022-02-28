@@ -4,10 +4,10 @@
 add_newline = true
 
 # Change command timeout from 500 to 1000 ms
-# command_timeout = 1000
+command_timeout = 60000
 
 # Change the default prompt format
-format = """[╭╴](bold dimmed green)$env_var$shell$username$hostname$memory_usage$battery
+format = """[╭┤](bold dimmed green) $env_var$memory_usage$battery$username$hostname
 [│](bold dimmed green)$time$shlvl$singularity$kubernetes$vcsh$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$docker_context$package$cmake$cobol$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$lua$nim$nodejs$ocaml$perl$php$pulumi$purescript$python$rlang$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$aws$gcloud$openstack$azure$crystal$custom$sudo$cmd_duration$jobs$directory
 [╰─](bold dimmed green)$status$character"""
 
@@ -22,15 +22,25 @@ disabled = false
 format = '[$env_value](bold white)'
 variable = "STARSHIP_DISTRO"
 
-[env_var.IP]
+[env_var.FREE_SPACE_GREEN]
 disabled = false
-format = "[〉](bold dimmed green)🌎[$env_value](bold white)"
-variable = "IP"
+format = "[  ](dimmed green)💾[${env_value}](bold green)"
+variable = "FREE_SPACE_GREEN"
+
+[env_var.FREE_SPACE_YELLOW]
+disabled = false
+format = "[  ](dimmed green)💾[${env_value}](bold yellow)"
+variable = "FREE_SPACE_YELLOW"
+
+[env_var.FREE_SPACE_RED]
+disabled = false
+format = "[  ](dimmed green)💾[${env_value}](bold red)"
+variable = "FREE_SPACE_RED"
 
 # Shows the username
 [username]
 disabled = false
-format = "[$user]($style)"
+format = "[  ](dimmed green)[$user]($style)"
 show_always = true
 style_root = "bold red"
 style_user = "bold yellow"
@@ -39,6 +49,7 @@ style_user = "bold yellow"
 disabled = false
 format = "[@$hostname](bold yellow)"
 ssh_only = false
+trim_at = ""
 
 [directory]
 format = " at [$path]($style)[$read_only]($read_only_style)"
@@ -49,25 +60,31 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [shell]
-format = "[〉](bold dimmed green)[$indicator]($style) "
-fish_indicator = ""
-powershell_indicator = "_"
-zsh_indicator = "zsh"
-bash_indicator = "zsh"
+format = "[  ](dimmed green)[$indicator]($style)"
+fish_indicator = "fsh"
+powershell_indicator = "psh"
+zsh_indicator = 'zsh'
+bash_indicator = "bsh"
 cmd_indicator = "cmd"
 ion_indicator = "ion"
 tcsh_indicator = "tsh"
 xonsh_indicator = "xsh"
 nu_indicator = "nu"
 unknown_indicator = "mystery shell"
-disabled = false
+disabled = true
 
 [status]
 disabled = false
-format = ' [\[$symbol $common_meaning$signal_name$maybe_int\]]($style)'
+format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style)'
 map_symbol = true
-recognize_signal_code =  true
+recognize_signal_code = true
 pipestatus = true
+symbol = "❌"
+success_symbol = "✅"
+not_executable_symbol = "🚫"
+not_found_symbol = "🔍"
+sigint_symbol = "🧱"
+signal_symbol = "⚡"
 
 [time]
 disabled = false
@@ -82,31 +99,29 @@ style = "bold yellow"
 min_time = 1000
 
 [battery]
-format = "[〉](bold dimmed green)[$symbol$percentage]($style)"
+format = " [$symbol$percentage]($style)"
 disabled = false
 
-[[battery.display]]  
+[[battery.display]]
 threshold = 20
 style = "bold red"
 
-[[battery.display]] 
+[[battery.display]]
 threshold = 40
 style = "bold yellow"
 
-[[battery.display]]  
+[[battery.display]]
 threshold = 100
 style = "bold white"
 
 [memory_usage]
 disabled = false
-format = "[〉](bold dimmed green)[🐏$ram_pct ♻️$swap_pct](bold green)"
+format = " [🐏${ram_pct} 李${swap_pct}](bold green)"
 threshold = -1
-symbol = " "
 
 [package]
 format = " [$symbol$version]($style)"
 symbol = "📦"
-
 
 [git_branch]
 format = " on [$symbol$branch]($style)"

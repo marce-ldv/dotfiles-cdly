@@ -59,8 +59,6 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -92,8 +90,7 @@ plugins=(
 # zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source $ZSH/oh-my-zsh.sh
-source $(dirname $(gem which colorls))/tab_complete.sh
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+[[ -f "${HOME}/.fzf.zsh" ]] && source "${HOME}/.fzf.zsh"
 
 # User configuration
 
@@ -132,31 +129,22 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-[[ -d ~/.automaticScripts ]] && PATH=${PATH}${PATH:+:}~/.automaticScripts
-[[ -d ~/.local/bin ]] && PATH=${PATH}${PATH:+:}~/.local/bin
-[[ -d ~/.local/sbin ]] && PATH=${PATH}${PATH:+:}~/.local/sbin
-[[ -d ~/bin ]] && PATH=${PATH}${PATH:+:}~/bin
-[[ -d ~/sbin ]] && PATH=${PATH}${PATH:+:}~/sbin
+[[ -d "${HOME}/.automaticScripts" ]] && PATH=${PATH}${PATH:+:}${HOME}/.automaticScripts
+[[ -d "${HOME}/.local/bin" ]] && PATH=${PATH}${PATH:+:}${HOME}/.local/bin
+[[ -d "${HOME}/.local/sbin" ]] && PATH=${PATH}${PATH:+:}${HOME}/.local/sbin
+[[ -d "${HOME}/bin" ]] && PATH=${PATH}${PATH:+:}${HOME}/bin
+[[ -d "${HOME}/sbin" ]] && PATH=${PATH}${PATH:+:}${HOME}/sbin
 
 export PATH
-export LC_ALL="es_AR.UTF-8"
-export LANG="es_AR.UTF-8"
-export LC_NUMERIC="es_AR.UTF-8"
-export LC_TIME="es_AR.UTF-8"
-export LC_MONETARY="es_AR.UTF-8"
-export LC_PAPER="es_AR.UTF-8"
-export LC_IDENTIFICATION="es_AR.UTF-8"
-export LC_NAME="es_AR.UTF-8"
-export LC_ADDRESS="es_AR.UTF-8"
-export LC_TELEPHONE="es_AR.UTF-8"
-export LC_MEASUREMENT="es_AR.UTF-8"
+
+[[ -f "${HOME}/.dotfiles-cdly/mods/language.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/language.sh"
 
 _change_dir() {
   dirtomove=$(ls | fzf)
   cd "$dirtomove"
 }
 
-_reverse_search(){
+_reverse_search() {
   local selected_command=$(fc -rnl 1 | fzf)
   LBUFFER=$selected_command
 }
@@ -175,57 +163,81 @@ alias mysql='nocorrect mysql '
 alias mkdir='nocorrect mkdir '
 alias sudo='nocorrect sudo '
 if [[ -f /usr/bin/batcat ]]; then
-   alias bat='batcat'
+  alias bat='batcat'
 fi
 
 # CUSTOM ALIASES
-alias l='colorls -lah --sd'
-alias la='colorls -lAh --sd'
-alias lc='colorls -lAh --sd'
-alias ll='colorls -lh --sd'
-alias ls='colorls --sd'
-alias lsa='colorls -lah --sd'
+architecture=$(dpkg --print-architecture)
+case $architecture in
+    armhf) echo "ARM detecterd, ignoring some configs" ;;
+    *)     alias ls='lsd' ;;
+esac
 
-alias ushell='bash ~/.dotfiles/update.sh && omz update && omz reload'
-alias pshell='cd ~/.dotfiles && git pull && bash ~/.dotfiles/update.sh && omz update && omz reload'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+alias rshell='cd ~/.dotfiles-cdly && git reset --hard && git pull && bash ~/.dotfiles-cdly/install.sh'
+alias ushell='bash ~/.dotfiles-cdly/update.sh && omz update && omz reload'
+alias pshell='cd ~/.dotfiles-cdly && git reset --hard && git pull && bash ~/.dotfiles-cdly/update.sh && omz update && omz reload'
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # find out which distribution we are running on
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
 # update alias
 case $_distro in
-    *neon*)   alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo pkcon refresh && sudo pkcon -y update';;
-    *)        alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove';;
+*neon*) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo pkcon refresh && sudo pkcon -y update' ;;
+*) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove' ;;
 esac
 
 # set an icon based on the distro
 case $_distro in
-    *kali*)                  ICON="ﴣ";;
-    *neon*)                  ICON="";;
-    *arch*)                  ICON="";;
-    *debian*)                ICON="";;
-    *raspbian*)              ICON="";;
-    *ubuntu*)                ICON="";;
-    *elementary*)            ICON="";;
-    *fedora*)                ICON="";;
-    *coreos*)                ICON="";;
-    *gentoo*)                ICON="";;
-    *mageia*)                ICON="";;
-    *centos*)                ICON="";;
-    *opensuse*|*tumbleweed*) ICON="";;
-    *sabayon*)               ICON="";;
-    *slackware*)             ICON="";;
-    *linuxmint*)             ICON="";;
-    *alpine*)                ICON="";;
-    *aosc*)                  ICON="";;
-    *nixos*)                 ICON="";;
-    *devuan*)                ICON="";;
-    *manjaro*)               ICON="";;
-    *rhel*)                  ICON="";;
-    *)                       ICON="";;
+*kali*) ICON="ﴣ" ;;
+*neon*) ICON="" ;;
+*arch*) ICON="" ;;
+*debian*) ICON="" ;;
+*raspbian*) ICON="" ;;
+*ubuntu*) ICON="" ;;
+*elementary*) ICON="" ;;
+*fedora*) ICON="" ;;
+*coreos*) ICON="" ;;
+*gentoo*) ICON="" ;;
+*mageia*) ICON="" ;;
+*centos*) ICON="" ;;
+*opensuse* | *tumbleweed*) ICON="" ;;
+*sabayon*) ICON="" ;;
+*slackware*) ICON="" ;;
+*linuxmint*) ICON="" ;;
+*alpine*) ICON="" ;;
+*aosc*) ICON="" ;;
+*nixos*) ICON="" ;;
+*devuan*) ICON="" ;;
+*manjaro*) ICON="" ;;
+*rhel*) ICON="" ;;
+*) ICON="" ;;
 esac
 
 export STARSHIP_DISTRO="$ICON"
-export IP="$(dig +short myip.opendns.com @resolver1.opendns.com)"
+
+function set_win_title() {
+  echo -ne "\033]0;$USER@$HOST: $(basename "$PWD")\007"
+}
+precmd_functions+=(set_win_title)
+
+function free_space() {
+  FREE_SPACE="$(df --output=pcent . | sed 1d | awk '{ print (substr($1, 1, length($1)-1)) }')"
+  if [[ $FREE_SPACE -gt 95 ]]; then
+    export FREE_SPACE_RED="$FREE_SPACE%"
+  elif [[ $FREE_SPACE -gt 90 ]]; then
+    export FREE_SPACE_YELLOW="$FREE_SPACE%"
+  else
+    export FREE_SPACE_GREEN="$FREE_SPACE%"
+  fi
+}
+precmd_functions+=(free_space)
+
+[[ -f "${HOME}/.dotfiles-cdly/mods/zshrc.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/zshrc.sh"
 
 eval "$(starship init zsh)"

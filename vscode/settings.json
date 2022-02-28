@@ -1,0 +1,116 @@
+{
+  "polacode.shadow": "rgba(0, 0, 0, 0) 0px 0px 50px",
+  "polacode.transparentBackground": true,
+  "polacode.target": "snippet",
+  "codesnap.boxShadow": "rgba(0, 0, 0, 0) 0px 0px 50px",
+  "codesnap.transparentBackground": true,
+  "codesnap.containerPadding": 0,
+  "codesnap.target": "container",
+  "explorer.autoReveal": false,
+  "window.zoomLevel": 1,
+  "terminal.integrated.fontSize": 15,
+  "editor.fontSize": 21,
+  "editor.tabSize": 2,
+  // "git.enabled": false,
+  "screencastMode.onlyKeyboardShortcuts": true,
+  "editor.renderWhitespace": "all",
+  "editor.semanticHighlighting.enabled": false,
+  "workbench.activityBar.visible": true,
+  "workbench.tips.enabled": false,
+  // "workbench.statusBar.feedback.visible": false,
+  "emmet.triggerExpansionOnTab": true,
+  "explorer.openEditors.visible": 10,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.colorCustomizations": {
+    "[Seti Monokai]": {
+      "statusBar.background": "#0b1011",
+      "sideBar.background": "#0b1011",
+      // "sideBar.background": "#1b1f1f",
+      "titleBar.activeBackground": "#1b1f1f",
+      "tab.inactiveBackground": "#1b1f1f",
+      "editorGroupHeader.tabsBackground": "#1b1f1f",
+      "activityBar.background": "#0c1011"
+    }
+  },
+  // "customizeUI.activityBar": "bottom",
+  "customizeUI.titleBar": "inline",
+  "customizeUI.fontSizeMap": {
+    "13px": "11px"
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.next": true
+  },
+  "explorer.confirmDelete": false,
+  "editor.formatOnPaste": true,
+  "files.trimTrailingWhitespace": true,
+  "sync.gist": "f726eaf0d4d67e0763b797a0dae23906",
+  "files.exclude": {
+    "node_modules": false,
+    ".next": false,
+    ".idea": false
+  },
+  "liveServer.settings.donotVerifyTags": true,
+  "workbench.colorTheme": "Default Dark+",
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  // "editor.formatOnSave": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "gitlens.advanced.messages": {
+    "suppressGitDisabledWarning": true
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "extensions.confirmedUriHandlerExtensionIds": [],
+  "workbench.iconTheme": "material-icon-theme",
+  "yaml.schemas": {
+    "file:///c%3A/Users/marce/.vscode/extensions/atlassian.atlascode-2.10.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "workbench.sideBar.location": "right",
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
+  "workbench.startupEditor": "newUntitledFile",
+  "customizeUI.activityBar": "regular",
+  "[javascriptreact]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "window.dialogStyle": "custom",
+  "tabnine.experimentalAutoImports": true,
+  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editor.showTabs": false,
+  "atlascode.jira.enabled": true,
+  "terminal.integrated.tabs.enabled": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "github.copilot.autocomplete.enable": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "javascript.preferences.quoteStyle": "single",
+  "[javascript]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": false,
+    "javascript": true
+  },
+  "editor.fontFamily": "'JetBrainsMono NF', 'Cascadia code', monospace",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "workbench.editorAssociations": {
+    "*.ps1": "default"
+  }
+}
