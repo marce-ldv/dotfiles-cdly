@@ -26,53 +26,85 @@
       "keys": "alt+shift+d"
     }
   ],
-  "alwaysOnTop": false,
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-  "disableAnimations": true,
-  "language": "en-US",
   "profiles": {
     "defaults": {
+      "experimental.retroTerminalEffect": false,
       "font": {
-        "face": "JetBrainsMono NF",
-        "size": 14
+        "face": "JetBrainsMonoNL Nerd Font",
+        "size": 14.0
       },
-      "opacity": 95,
-      "padding": "10"
+      "opacity": 20,
+      "padding": "8",
+      "scrollbarState": "hidden",
+      "useAcrylic": true
     },
     "list": [
       {
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
-        "name": "Ubuntu",
-        "source": "Windows.Terminal.Wsl",
-        "tabTitle": "Ubuntu Linux"
+        "name": "Windows PowerShell"
       },
       {
-        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-        "hidden": false,
-        "name": "PowerShell",
-        "source": "Windows.Terminal.PowershellCore",
-        "startingDirectory": "D:\\code",
-        "tabTitle": "PowerShell"
-      },
-      {
+        "colorScheme": "Tango Dark",
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
         "name": "Command Prompt"
       },
       {
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "colorScheme": "Tango Dark",
+        "font": {
+          "face": "JetBrainsMono Nerd Font"
+        },
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
-        "name": "Windows PowerShell Old"
+        "name": "PowerShell",
+        "opacity": 90,
+        "padding": "8",
+        "source": "Windows.Terminal.PowershellCore",
+        "startingDirectory": "E:\\code\\",
+        "useAcrylic": false
+      },
+      {
+        "font": {
+          "face": "JetBrainsMonoNL Nerd Font"
+        },
+        "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+        "hidden": false,
+        "name": "Ubuntu",
+        "opacity": 71,
+        "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
+        "useAcrylic": false
+      },
+      {
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "hidden": true,
+        "name": "Ubuntu",
+        "source": "Windows.Terminal.Wsl"
+      },
+      {
+        "colorScheme": "Ubuntu-22.04-ColorScheme",
+        "guid": "{d7b20cea-47a9-518c-95a4-c8bd91e2e1c6}",
+        "hidden": false,
+        "name": "Ubuntu 22.04.2 LTS",
+        "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
+      },
+      {
+        "guid": "{17bf3de4-5353-5709-bcf9-835bd952a95e}",
+        "hidden": true,
+        "name": "Ubuntu-22.04",
+        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
   "schemes": [
     {
-      "background": "#080808",
-      "black": "#0A0A0A",
+      "background": "#0C0C0C",
+      "black": "#0C0C0C",
       "blue": "#0037DA",
       "brightBlack": "#767676",
       "brightBlue": "#3B78FF",
@@ -255,6 +287,52 @@
       "yellow": "#C4A000"
     },
     {
+      "background": "#300A24",
+      "black": "#171421",
+      "blue": "#0037DA",
+      "brightBlack": "#767676",
+      "brightBlue": "#08458F",
+      "brightCyan": "#2C9FB3",
+      "brightGreen": "#26A269",
+      "brightPurple": "#A347BA",
+      "brightRed": "#C01C28",
+      "brightWhite": "#F2F2F2",
+      "brightYellow": "#A2734C",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#3A96DD",
+      "foreground": "#FFFFFF",
+      "green": "#26A269",
+      "name": "Ubuntu-22.04-ColorScheme",
+      "purple": "#881798",
+      "red": "#C21A23",
+      "selectionBackground": "#FFFFFF",
+      "white": "#CCCCCC",
+      "yellow": "#A2734C"
+    },
+    {
+      "background": "#300A24",
+      "black": "#171421",
+      "blue": "#0037DA",
+      "brightBlack": "#767676",
+      "brightBlue": "#08458F",
+      "brightCyan": "#2C9FB3",
+      "brightGreen": "#26A269",
+      "brightPurple": "#A347BA",
+      "brightRed": "#C01C28",
+      "brightWhite": "#F2F2F2",
+      "brightYellow": "#A2734C",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#3A96DD",
+      "foreground": "#FFFFFF",
+      "green": "#26A269",
+      "name": "Ubuntu-ColorScheme",
+      "purple": "#881798",
+      "red": "#C21A23",
+      "selectionBackground": "#FFFFFF",
+      "white": "#CCCCCC",
+      "yellow": "#A2734C"
+    },
+    {
       "background": "#000000",
       "black": "#000000",
       "blue": "#000080",
@@ -276,123 +354,7 @@
       "selectionBackground": "#FFFFFF",
       "white": "#C0C0C0",
       "yellow": "#808000"
-    },
-    {
-      "background": "#111927",
-      "black": "#000000",
-      "blue": "#004CFF",
-      "brightBlack": "#666666",
-      "brightBlue": "#5CB2FF",
-      "brightCyan": "#5CECC6",
-      "brightGreen": "#C5F467",
-      "brightPurple": "#AE81FF",
-      "brightRed": "#FF8484",
-      "brightWhite": "#FFFFFF",
-      "brightYellow": "#FFCC5C",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#2EE7B6",
-      "foreground": "#D4D4D4",
-      "green": "#9FEF00",
-      "name": "xcad_hackthebox",
-      "purple": "#BC3FBC",
-      "red": "#FF3E3E",
-      "selectionBackground": "#FFFFFF",
-      "white": "#FFFFFF",
-      "yellow": "#FFAF00"
-    },
-    {
-      "background": "#1A1A1A",
-      "black": "#121212",
-      "blue": "#2B4FFF",
-      "brightBlack": "#2F2F2F",
-      "brightBlue": "#5C78FF",
-      "brightCyan": "#5AC8FF",
-      "brightGreen": "#905AFF",
-      "brightPurple": "#5EA2FF",
-      "brightRed": "#BA5AFF",
-      "brightWhite": "#FFFFFF",
-      "brightYellow": "#685AFF",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#28B9FF",
-      "foreground": "#F1F1F1",
-      "green": "#7129FF",
-      "name": "xcad_tdl",
-      "purple": "#2883FF",
-      "red": "#A52AFF",
-      "selectionBackground": "#FFFFFF",
-      "white": "#F1F1F1",
-      "yellow": "#3D2AFF"
-    },
-    {
-      "background": "#0F0F0F",
-      "black": "#000000",
-      "blue": "#2878FF",
-      "brightBlack": "#2F2F2F",
-      "brightBlue": "#5E99FF",
-      "brightCyan": "#5AD6FF",
-      "brightGreen": "#FFB15A",
-      "brightPurple": "#935CFF",
-      "brightRed": "#FF755A",
-      "brightWhite": "#FFFFFF",
-      "brightYellow": "#FFD25A",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#28C8FF",
-      "foreground": "#F1F1F1",
-      "green": "#FF9A28",
-      "name": "xcad_tdl_colorful",
-      "purple": "#732BFF",
-      "red": "#FF4C27",
-      "selectionBackground": "#FFFFFF",
-      "white": "#F1F1F1",
-      "yellow": "#FFC72A"
-    },
-    {
-      "background": "#0F0F0F",
-      "black": "#000000",
-      "blue": "#184AE8",
-      "brightBlack": "#5F5F5F",
-      "brightBlue": "#4771F5",
-      "brightCyan": "#31C1FF",
-      "brightGreen": "#FFD631",
-      "brightPurple": "#7631FF",
-      "brightRed": "#FF3190",
-      "brightWhite": "#FFFFFF",
-      "brightYellow": "#FF9731",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#008DCB",
-      "foreground": "#D9D9D9",
-      "green": "#CBA300",
-      "name": "xcad_tdl_old",
-      "purple": "#4300CB",
-      "red": "#CB005F",
-      "selectionBackground": "#FFFFFF",
-      "white": "#CFCFCF",
-      "yellow": "#CB6600"
-    },
-    {
-      "background": "#282C34",
-      "black": "#000000",
-      "blue": "#007ACC",
-      "brightBlack": "#75715E",
-      "brightBlue": "#11A8CD",
-      "brightCyan": "#11A8CD",
-      "brightGreen": "#0DBC79",
-      "brightPurple": "#AE81FF",
-      "brightRed": "#DD6B65",
-      "brightWhite": "#F8F8F2",
-      "brightYellow": "#E6DB74",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#11A8CD",
-      "foreground": "#D4D4D4",
-      "green": "#0DBC79",
-      "name": "xcad_vscode",
-      "purple": "#BC3FBC",
-      "red": "#F4423A",
-      "selectionBackground": "#FFFFFF",
-      "white": "#F8F8F2",
-      "yellow": "#E5E510"
     }
   ],
-  "tabWidthMode": "equal",
-  "theme": "dark"
+  "themes": []
 }
