@@ -7,4 +7,4 @@ alias open='\''xdg-open'\''
 alias ushellm='\''bash ~/.dotfiles/update.sh && omz update && bash ~/.dotfiles/patch.update.sh && omz reload'\''
 alias pshellm='\''cd ~/.dotfiles && git pull && bash ~/.dotfiles/update.sh  && bash ~/.dotfiles/patch.update.sh && omz update && omz reload'\''
 alias cdc='\''cd ~/code'\''
-' >> "${HOME}/.zshrc"
+' >>"${HOME}/.zshrc"

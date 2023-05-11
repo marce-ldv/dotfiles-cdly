@@ -169,8 +169,8 @@ fi
 # CUSTOM ALIASES
 architecture=$(dpkg --print-architecture)
 case $architecture in
-    armhf) echo "ARM detecterd, ignoring some configs" ;;
-    *)     alias ls='lsd' ;;
+armhf) echo "ARM detecterd, ignoring some configs" ;;
+*) alias ls='lsd' ;;
 esac
 
 alias l='ls -l'
