@@ -2,6 +2,10 @@
 
 ## Installation
 
+### Mac
+
+Wip
+
 ### PowerShell
 
 If you're using SSH and will contribute to the project, install using the following command:

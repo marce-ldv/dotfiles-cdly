@@ -83,8 +83,8 @@ plugins=(
   rsync
   command-not-found
   zsh-interactive-cd
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+  # zsh-autosuggestions
+  # zsh-syntax-highlighting
 )
 
 # zstyle :omz:plugins:ssh-agent identities id_rsa
@@ -137,7 +137,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 export PATH
 
-[[ -f "${HOME}/.dotfiles-cdly/mods/language.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/language.sh"
+# [[ -f "${HOME}/.dotfiles-cdly/mods/language.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/language.sh"
 
 _change_dir() {
   dirtomove=$(ls | fzf)
@@ -156,23 +156,17 @@ zle -N _reverse_search
 bindkey '^r' _reverse_search
 
 # FIXES! DO NOT CHANGE
-alias man='nocorrect man '
-alias mv='nocorrect mv '
-alias mv='nocorrect cp '
-alias mysql='nocorrect mysql '
-alias mkdir='nocorrect mkdir '
-alias sudo='nocorrect sudo '
+alias man='man '
+alias mv='mv '
+alias mv='cp '
+alias mysql='mysql '
+alias mkdir='mkdir '
+alias sudo='sudo '
 if [[ -f /usr/bin/batcat ]]; then
   alias bat='batcat'
 fi
 
 # CUSTOM ALIASES
-architecture=$(dpkg --print-architecture)
-case $architecture in
-armhf) echo "ARM detecterd, ignoring some configs" ;;
-*) alias ls='lsd' ;;
-esac
-
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -184,13 +178,13 @@ alias pshell='cd ~/.dotfiles-cdly && git reset --hard && git pull && bash ~/.dot
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # find out which distribution we are running on
-_distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+# _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
 # update alias
-case $_distro in
-*neon*) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo pkcon refresh && sudo pkcon -y update' ;;
-*) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove' ;;
-esac
+# case $_distro in
+# *neon*) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo pkcon refresh && sudo pkcon -y update' ;;
+# *) alias uos='sudo apt-mark auto $(apt-mark showmanual | grep -E "^linux-([[:alpha:]]+-)+[[:digit:].]+-[^-]+(|-.+)$"); sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove' ;;
+# esac
 
 # set an icon based on the distro
 case $_distro in
@@ -236,8 +230,23 @@ function free_space() {
     export FREE_SPACE_GREEN="$FREE_SPACE%"
   fi
 }
-precmd_functions+=(free_space)
+# precmd_functions+=(free_space)
 
-[[ -f "${HOME}/.dotfiles-cdly/mods/zshrc.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/zshrc.sh"
+# [[ -f "${HOME}/.dotfiles-cdly/mods/zshrc.sh" ]] && source "${HOME}/.dotfiles-cdly/mods/zshrc.sh"
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+#Added by furycli:
+export PATH=/Users/mludovino/Library/Python/3.11/bin:/Users/mludovino/.sdkman/candidates/grails/current/bin:/Users/mludovino/.sdkman/candidates/gradle/current/bin:/Users/mludovino/.sdkman/candidates/java/current/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/Users/mludovino/Library/Python/3.11/bin:/Users/mludovino/.sdkman/candidates/grails/current/bin:/Users/mludovino/.sdkman/candidates/gradle/current/bin:/Users/mludovino/.sdkman/candidates/java/current/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+export NVM_DIR=/Users/mludovino/.nvm
+[ -s /Users/mludovino/.nvm/nvm.sh ] && \. /Users/mludovino/.nvm/nvm.sh
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Contents/Home
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Contents/Home
 
 eval "$(starship init zsh)"

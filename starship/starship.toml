@@ -116,7 +116,7 @@ style = "bold white"
 
 [memory_usage]
 disabled = false
-format = " [🐏${ram_pct} 李${swap_pct}](bold green)"
+format = " [🐏${ram_pct} 李${swap_pct}](bold green)"
 threshold = -1
 
 [package]

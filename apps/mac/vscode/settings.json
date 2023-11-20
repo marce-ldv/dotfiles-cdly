@@ -1,0 +1,122 @@
+{
+  "editor.linkedEditing": true,
+  "editor.cursorBlinking": "expand",
+  "editor.fontSize": 20,
+  "editor.suggestSelection": "first",
+  "editor.rulers": [100],
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.excludeGitIgnore": false,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "search.useGlobalIgnoreFiles": true,
+  "search.useIgnoreFiles": true,
+  "workbench.editor.showTabs": "single",
+  "editor.minimap.enabled": false,
+  "explorer.openEditors.visible": 0,
+  "editor.lineHeight": 1.8,
+  "editor.inlayHints.fontSize": 20,
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.fontFamily": "Dank Mono, 'Courier New', monospace",
+
+  // Appearance
+  "workbench.iconTheme": "symbols",
+  "workbench.colorTheme": "Codely Dark",
+  "editor.fontFamily": "Dank Mono, 'Courier New', monospace",
+  "workbench.productIconTheme": "fluent-icons",
+  "editor.fontLigatures": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "explorer.compactFolders": false,
+  "editor.renderWhitespace": "selection",
+
+  "workbench.list.horizontalScrolling": true,
+  "workbench.sideBar.location": "left",
+  "workbench.tree.indent": 20,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "breadcrumbs.symbolPath": "off",
+  "editor.dragAndDrop": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+
+  "editor.codeActionsOnSave": [
+    "source.fixAll.eslint",
+    "source.addMissingImports"
+  ],
+
+  // Extensions
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.formatOnSave": false
+    // "editor.codeActionsOnSave": [
+    //   "source.fixAll.eslint",
+    //   "source.addMissingImports"
+    // ]
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.formatOnSave": false,
+    // "editor.codeActionsOnSave": [
+    //   "source.fixAll.eslint",
+    //   "source.addMissingImports"
+    // ]
+  },
+  "editor.inlineSuggest.enabled": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.formatOnSave": false,
+    // "editor.codeActionsOnSave": [
+    //   "source.fixAll.eslint",
+    //   "source.addMissingImports"
+    // ]
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // "editor.formatOnSave": false,
+    // "editor.codeActionsOnSave": [
+    //   "source.fixAll.eslint",
+    //   "source.addMissingImports"
+    // ]
+  },
+  "terminal.integrated.env.windows": {},
+  "githubPullRequests.pullBranch": "never",
+  "git.autofetch": true,
+  "github.copilot.advanced": {},
+  "terminal.integrated.env.linux": {},
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.userWords": ["amet", "autofetch", "esbenp", "Meli"],
+  "workbench.startupEditor": "none",
+  "jest.autoRun": {
+    "onSave": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "git.openRepositoryInParentFolders": "always",
+  "git.enableSmartCommit": true,
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "window.openFoldersInNewWindow": "on",
+  "symbols.hidesExplorerArrows": false,
+  "terminal.integrated.env.osx": {}
+}
