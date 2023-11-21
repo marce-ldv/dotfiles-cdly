@@ -85,6 +85,7 @@ plugins=(
   zsh-interactive-cd
   # zsh-autosuggestions
   # zsh-syntax-highlighting
+  z
 )
 
 # zstyle :omz:plugins:ssh-agent identities id_rsa
@@ -149,11 +150,23 @@ _reverse_search() {
   LBUFFER=$selected_command
 }
 
+_show_open_files() {
+  selected=$(ps axc | awk 'NR > 1' | awk '{print substr($0,index($0,$5))}' | sort -u | fzf)
+
+  if [ ! -z $1 ]; then
+    lsof -r 2 -c "$selected"
+  else
+    lsof -c "$selected"
+  fi
+}
+
 zle -N _change_dir
 bindkey '^h' _change_dir
 
 zle -N _reverse_search
 bindkey '^r' _reverse_search
+
+zle -N _show_open_files
 
 # FIXES! DO NOT CHANGE
 alias man='man '
@@ -250,3 +263,5 @@ export ES_JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Cont
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/21.0.1/libexec/openjdk.jdk/Contents/Home
 
 eval "$(starship init zsh)"
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
